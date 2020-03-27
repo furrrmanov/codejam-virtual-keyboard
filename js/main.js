@@ -67,8 +67,7 @@ const KeyObj2 = {
   KeyLeftBracets: new Key('['),
   KeyRigthBracets: new Key(']'),
   KeyLefthSlash: new Key('\\'),
-}
-
+};
 
 // клавиша Del
 const KeyDel = document.createElement('button');
@@ -190,6 +189,7 @@ gridKey.append(KeyRightCtrl);
 
 /* Mouse action_______________________________________ */
 
+
 const arrActionKey = gridKey.querySelectorAll('.act');
 arrActionKey.forEach((item) => item.classList.add('allkey'));
 
@@ -239,23 +239,23 @@ gridKey.addEventListener('click', handSpace);
 
 //  Вывод клафиш с физ. клавиатуры;
 function keyboardKeyDown(event) {
-  const keyboarKey = event.key;
+  const keyboardKey = event.key;
   if (
-    keyboarKey !== 'Shift'
-    && keyboarKey !== 'Backspace'
-    && keyboarKey !== 'Tab'
-    && keyboarKey !== 'CapsLock'
-    && keyboarKey !== 'Control'
-    && keyboarKey !== 'Ctrl'
-    && keyboarKey !== 'Meta'
-    && keyboarKey !== 'Alt'
-    && keyboarKey !== 'Enter'
-    && keyboarKey !== 'Delete'
+    keyboardKey !== 'Shift'
+    && keyboardKey !== 'Backspace'
+    && keyboardKey !== 'Tab'
+    && keyboardKey !== 'CapsLock'
+    && keyboardKey !== 'Control'
+    && keyboardKey !== 'Ctrl'
+    && keyboardKey !== 'Meta'
+    && keyboardKey !== 'Alt'
+    && keyboardKey !== 'Enter'
+    && keyboardKey !== 'Delete'
   ) {
-    textAr.value += keyboarKey;
+    textAr.value += keyboardKey;
   }
   const array = document.querySelectorAll('.allkey');
-  array.forEach((item) => (item.textContent === keyboarKey ? item.classList.add('active') : false));
+  array.forEach((item) => (item.textContent === keyboardKey ? item.classList.add('active') : false));
 }
 document.addEventListener('keydown', keyboardKeyDown);
 
@@ -279,18 +279,62 @@ document.addEventListener('keydown', keyboardBackSpace);
 // Space_______________________________________________________
 
 function KeyboardSpace(event) {
-  const space = event.key;
-  if (space.Keycode === 32) {
-    space.classList.add('active');
-    console.log('+');
+  const space = event.code;
+  if (space === 'Space') {
+    const but = document.querySelector('.space');
+    but.classList.add('active');
   }
 }
 document.addEventListener('keydown', KeyboardSpace);
 
+function KeyboardSpaceUp(event) {
+  const space = event.code;
+  if (space === 'Space') {
+    const but = document.querySelector('.space');
+    but.classList.remove('active');
+  }
+}
+document.addEventListener('keyup', KeyboardSpaceUp);
 
-// /* Enter____________________________________________________  */
-// function KeyboardEnter(event) {
-//   const enter = event.key;
-//   if (enter === 'Enter')(textAr.value += '/nd');
-// }
-// gridKey.addEventListener('keydown', KeyboardEnter);
+
+function KeyboardShiftDown(event) {
+  const shift = event.code;
+  console.log(shift);
+  if (shift === 'ShiftLeft') {
+    //  const shift = document.querySelector('.')
+    KeyLeftShift.classList.add('active');
+  }
+  if (shift === 'ShiftRight') {
+    KeyRightShift.classList.add('active');
+  }
+}
+document.addEventListener('shiftKey', KeyboardShiftDown);
+
+let caps = false;
+
+function MouseCapsDown(event) {
+  const codes = event.target;
+  if (codes.textContent === 'CapsLock') {
+    caps = true;
+    codes.classList.toggle('pressed');
+  }
+  if (caps === true && !codes.classList.contains('pressed')) {
+    const val = document.querySelectorAll('.key');
+    for (let i = 0; i < val.length; i += 1) {
+      val[i].textContent = val[i].textContent.toLowerCase();
+    }
+  }
+}
+gridKey.addEventListener('click', MouseCapsDown);
+
+function MouseCapsUp(event) {
+  const codes = event.target;
+  if (codes.textContent === 'CapsLock' && codes.classList.contains('pressed')) {
+    caps = false;
+    const val = document.querySelectorAll('.key');
+    for (let i = 0; i < val.length; i += 1) {
+      val[i].textContent = val[i].textContent.toUpperCase();
+    }
+  }
+}
+gridKey.addEventListener('click', MouseCapsUp);

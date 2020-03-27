@@ -213,6 +213,10 @@ textarea {
   opacity: 50%;
 }
 
+.pressed {
+  background-color: rgba(76, 14, 138, 0.5);
+}
+
 
 
 /*___________________________________Special Buttons*/
