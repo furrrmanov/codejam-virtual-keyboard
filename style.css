@@ -1,6 +1,7 @@
 body {
   margin: 0px;
   padding: 0px;
+  background-color: rgba(4, 202, 136, 0.384);
 }
 
 .grid {
@@ -10,6 +11,7 @@ body {
 
   padding-top: 100px;
   padding-left: 250px;
+
 }
 
 textarea {
@@ -23,6 +25,7 @@ textarea {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
+  
 }
 
 .key {
