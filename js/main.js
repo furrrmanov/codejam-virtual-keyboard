@@ -253,6 +253,10 @@ function keyboardKeyDown(event) {
     && keyboardKey !== 'Alt'
     && keyboardKey !== 'Enter'
     && keyboardKey !== 'Delete'
+    && keyboardKey !== 'ArrowLeft'
+    && keyboardKey !== 'ArrowRight'
+    && keyboardKey !== 'ArrowUp'
+    && keyboardKey !== 'ArrowDown'
   ) {
     textAr.value += keyboardKey;
   }
@@ -485,3 +489,23 @@ function DeleteKeyboardUp(event) {
   }
 }
 document.addEventListener('keyup', DeleteKeyboardUp);
+
+// Key arrow__________________________________________________________________________
+
+function KeyboardArrowDown(event) {
+  const arrow = event.code;
+
+  if (arrow === 'ArrowLeft') {
+    textAr.value += '◄';
+  }
+  if (arrow === 'ArrowUp') {
+    textAr.value += '▲';
+  }
+  if (arrow === 'ArrowRight') {
+    textAr.value += '►';
+  }
+  if (arrow === 'ArrowDown') {
+    textAr.value += '▼';
+  }
+}
+document.addEventListener('keydown', KeyboardArrowDown)
