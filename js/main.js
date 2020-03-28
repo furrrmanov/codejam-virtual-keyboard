@@ -138,7 +138,7 @@ gridKey.append(KeyRightShift);
 /* клавиша LeftCtrl */
 const KeyLeftCtrl = document.createElement('button');
 KeyLeftCtrl.classList.add('ctrl');
-KeyLeftCtrl.classList.add('act');
+// KeyLeftCtrl.classList.add('act');
 KeyLeftCtrl.textContent = 'Ctrl';
 gridKey.append(KeyLeftCtrl);
 
@@ -152,7 +152,7 @@ gridKey.append(KeyWin);
 /* клавиша LeftAlt */
 const KeyLeftAlt = document.createElement('button');
 KeyLeftAlt.classList.add('alt');
-KeyLeftAlt.classList.add('act');
+// KeyLeftAlt.classList.add('act');
 KeyLeftAlt.textContent = 'Alt';
 gridKey.append(KeyLeftAlt);
 
@@ -166,7 +166,7 @@ gridKey.append(KeySpace);
 /* клавиша RightAlt */
 const KeyRightAlt = document.createElement('button');
 KeyRightAlt.classList.add('alt');
-KeyRightAlt.classList.add('act');
+// KeyRightAlt.classList.add('act');
 KeyRightAlt.textContent = 'Alt';
 gridKey.append(KeyRightAlt);
 
@@ -180,7 +180,7 @@ const KeyObj5 = {
 /* клавиша RightCtrl */
 const KeyRightCtrl = document.createElement('button');
 KeyRightCtrl.classList.add('ctrl');
-KeyRightCtrl.classList.add('act');
+// KeyRightCtrl.classList.add('act');
 KeyRightCtrl.style.cssText = `margin-left:6px;
 width:60px
 `;
@@ -397,4 +397,91 @@ function KeyboardCapsUp(event) {
 document.addEventListener('keydown', KeyboardCapsUp);
 
 // Ctrl________________________________________________________________________________
+function KeyboardCtrltDown(event) {
+  const ctrl = event.code;
+  if (ctrl === 'ControlLeft') {
+    KeyLeftCtrl.classList.add('active');
+  }
+  if (ctrl === 'ControlRight') {
+    KeyRightCtrl.classList.add('active');
+  }
+}
+document.addEventListener('keydown', KeyboardCtrltDown);
 
+function KeyboardCtrltUp(event) {
+  const ctrl = event.code;
+  if (ctrl === 'ControlLeft') {
+    KeyLeftCtrl.classList.remove('active');
+  }
+  if (ctrl === 'ControlRight') {
+    KeyRightCtrl.classList.remove('active');
+  }
+}
+document.addEventListener('keyup', KeyboardCtrltUp);
+
+function CtrltLeftMouseDown(event) {
+  const cursDown = event.target;
+  cursDown.classList.add('active');
+}
+KeyLeftCtrl.addEventListener('mousedown', CtrltLeftMouseDown);
+
+function CtrltRightMouseDown(event) {
+  const cursDown = event.target;
+  cursDown.classList.add('active');
+}
+KeyRightCtrl.addEventListener('mousedown', CtrltRightMouseDown);
+
+// ALt__________________________________________________________________________________
+
+function KeyboardAltDown(event) {
+  const alt = event.code;
+  if (alt === 'AltLeft') {
+    KeyLeftAlt.classList.add('active');
+  }
+  if (alt === 'AltRight') {
+    KeyRightAlt.classList.add('active');
+  }
+}
+document.addEventListener('keydown', KeyboardAltDown);
+
+function KeyboardAltUp(event) {
+  const alt = event.code;
+  if (alt === 'AltLeft') {
+    KeyLeftAlt.classList.remove('active');
+  }
+  if (alt === 'AltRight') {
+    KeyRightAlt.classList.remove('active');
+  }
+}
+document.addEventListener('keyup', KeyboardAltUp);
+
+function AltLeftMouseDown(event) {
+  const cursDown = event.target;
+  cursDown.classList.add('active');
+}
+KeyLeftAlt.addEventListener('mousedown', AltLeftMouseDown);
+
+function AltRightMouseDown(event) {
+  const cursDown = event.target;
+  cursDown.classList.add('active');
+}
+KeyRightAlt.addEventListener('mousedown', AltRightMouseDown);
+
+// Delete___________________________________________________________________________________________
+
+function DeleteKeyboardDown(event) {
+  const del = event.code;
+  if (del === 'Delete') {
+    KeyDel.classList.add('active');
+    textAr.value = textAr.value.slice(0, -1);
+  }
+}
+document.addEventListener('keydown', DeleteKeyboardDown);
+
+function DeleteKeyboardUp(event) {
+  const del = event.code;
+  if (del === 'Delete') {
+    KeyDel.classList.remove('active');
+  }
+}
+document.addEventListener('keyup', DeleteKeyboardUp);

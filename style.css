@@ -149,6 +149,7 @@ textarea {
   transition: 0.05s ease-out;
   outline: none;
   margin-top: 8px;
+  font-weight: bold;
 }
 
 .win {
@@ -179,6 +180,7 @@ textarea {
   outline: none;
   margin-left: 6px;
   margin-top: 8px;
+  font-weight: bold;
 }
 
 .space {
