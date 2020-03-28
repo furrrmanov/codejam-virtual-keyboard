@@ -1,3 +1,4 @@
+
 const body = document.querySelector('body');
 // обертка калькулятора
 const grid = document.createElement('div');
@@ -22,6 +23,7 @@ class Key {
     gridKey.append(this.but);
   }
 }
+
 
 const KeyObj1 = {
   KeyKov: new Key('`'),
@@ -107,7 +109,7 @@ gridKey.append(KeyEnter);
 // клавиша LeftShift
 const KeyLeftShift = document.createElement('button');
 KeyLeftShift.classList.add('shift');
-KeyLeftShift.classList.add('act');
+// KeyLeftShift.classList.add('act');
 KeyLeftShift.textContent = 'Shift';
 gridKey.append(KeyLeftShift);
 
@@ -128,7 +130,7 @@ const KeyObj4 = {
 // клавиша RightShift
 const KeyRightShift = document.createElement('button');
 KeyRightShift.classList.add('shift');
-KeyRightShift.classList.add('act');
+// KeyRightShift.classList.add('act');
 KeyRightShift.style.marginLeft = '6px';
 KeyRightShift.textContent = 'Shift';
 gridKey.append(KeyRightShift);
@@ -296,22 +298,46 @@ function KeyboardSpaceUp(event) {
 }
 document.addEventListener('keyup', KeyboardSpaceUp);
 
+// Shift__________________________________________________________________________________-
 
 function KeyboardShiftDown(event) {
   const shift = event.code;
-  console.log(shift);
   if (shift === 'ShiftLeft') {
-    //  const shift = document.querySelector('.')
     KeyLeftShift.classList.add('active');
   }
   if (shift === 'ShiftRight') {
     KeyRightShift.classList.add('active');
   }
 }
-document.addEventListener('shiftKey', KeyboardShiftDown);
+document.addEventListener('keydown', KeyboardShiftDown);
+
+function KeyboardShiftUp(event) {
+  const shift = event.code;
+  if (shift === 'ShiftLeft') {
+    KeyLeftShift.classList.remove('active');
+  }
+  if (shift === 'ShiftRight') {
+    KeyRightShift.classList.remove('active');
+  }
+}
+document.addEventListener('keyup', KeyboardShiftUp);
+
+function ShiftMouseDown(event) {
+  const cursDown = event.target;
+  cursDown.classList.add('active');
+}
+KeyLeftShift.addEventListener('mousedown', ShiftMouseDown);
+
+function ShiftMouseUp(event) {
+  const cursUp = event.target;
+  cursUp.classList.add('active');
+}
+KeyRightShift.addEventListener('mousedown', ShiftMouseUp);
+
+
+// Capslock Mouse _____________________________________________________________________________
 
 let caps = false;
-
 function MouseCapsDown(event) {
   const codes = event.target;
   if (codes.textContent === 'CapsLock') {
@@ -338,3 +364,37 @@ function MouseCapsUp(event) {
   }
 }
 gridKey.addEventListener('click', MouseCapsUp);
+
+
+// CapsLock Keyboard ______________________________________________________________________________
+
+function KeyboardCapsDown(event) {
+  const codes = event.code;
+  if (codes === 'CapsLock') {
+    caps = true;
+    document.querySelector('.caps').classList.toggle('pressed');
+  }
+  if (caps === true && codes === 'CapsLock') {
+    const val = document.querySelectorAll('.key');
+    for (let i = 0; i < val.length; i += 1) {
+      val[i].textContent = val[i].textContent.toUpperCase();
+    }
+  }
+}
+document.addEventListener('keydown', KeyboardCapsDown);
+
+function KeyboardCapsUp(event) {
+  const codes = event.code;
+  const but = document.querySelector('.caps');
+  if (caps === true && codes === 'CapsLock' && !but.classList.contains('pressed')) {
+    caps = false;
+    const val = document.querySelectorAll('.key');
+    for (let i = 0; i < val.length; i += 1) {
+      val[i].textContent = val[i].textContent.toLowerCase();
+    }
+  }
+}
+document.addEventListener('keydown', KeyboardCapsUp);
+
+// Ctrl________________________________________________________________________________
+

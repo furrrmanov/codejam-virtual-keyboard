@@ -134,6 +134,7 @@ textarea {
   transition: 0.05s ease-out;
   outline: none;
   margin-top: 8px;
+  font-weight: bold;
 }
 
 .ctrl {
