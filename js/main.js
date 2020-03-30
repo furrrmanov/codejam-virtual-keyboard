@@ -61,7 +61,7 @@ class Key {
     }
     if (this.but.textContent === 'Alt') {
       this.but.classList.remove('key');
-      this.but.classList.add('act');
+      // this.but.classList.add('act');
       this.but.classList.add('alt');
     }
     if (this.but.textContent === 'space') {
@@ -145,6 +145,11 @@ const KeyObj = {
   KeyRightCtrl: new Key('Ctrl'),
 };
 
+function initKey(obj) {
+  return obj;
+}
+initKey(KeyObj);
+
 // Ru_______________________________________________________________________________
 const KeyRu = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
   'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.'];
@@ -161,8 +166,29 @@ const KeyEngShift = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_',
 document.querySelectorAll('.shift')[1].style.marginLeft = '6px';
 document.querySelectorAll('.ctrl')[1].style.marginLeft = '6px';
 
+// function replace Language
+function ReplaceLang(a) {
+  const arr = document.querySelectorAll('.key');
+  for (let i = 0; i < arr.length; i += 1) {
+    arr[i].textContent = a[i];
+  }
+}
+// function UpperCase
+function LangUpperCase(a) {
+  const arr = document.querySelectorAll('.key');
+  for (let i = 0; i < arr.length; i += 1) {
+    arr[i].textContent = a[i].toUpperCase();
+  }
+}
+// function LowerCase
+function LangLowerCase(a) {
+  const arr = document.querySelectorAll('.key');
+  for (let i = 0; i < arr.length; i += 1) {
+    arr[i].textContent = a[i];
+  }
+}
 
-// Replace lang.__________________________________________________________________________________
+// Replace lanuage__________________________________________________________________________________
 function MouseDown(event) {
   const targ = event.target;
   if (targ.textContent === 'Win') {
@@ -170,35 +196,24 @@ function MouseDown(event) {
     gridKey.classList.toggle('Rus');
 
     if (targ.classList.contains('ru')) {
-      const arr = document.querySelectorAll('.key');
-      for (let i = 0; i < arr.length; i += 1) {
-        arr[i].textContent = KeyRu[i];
-      }
+      ReplaceLang(KeyRu);
     } else if (!targ.classList.contains('ru')) {
-      const arr = document.querySelectorAll('.key');
-      for (let i = 0; i < arr.length; i += 1) {
-        arr[i].textContent = KeyEng[i];
-      }
+      ReplaceLang(KeyEng);
     }
   }
 }
 gridKey.addEventListener('click', MouseDown);
 
+
 // Mouse Shift Down_______________________________________________________________________________
 function MouseShiftDown(event) {
   const { target } = event;
   if (target.textContent === 'Shift' && !gridKey.classList.contains('Rus')) {
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyEngShift[i].toUpperCase();
-    }
+    LangUpperCase(KeyEngShift);
   }
 
   if (target.textContent === 'Shift' && gridKey.classList.contains('Rus')) {
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyRuShift[i].toUpperCase();
-    }
+    LangUpperCase(KeyRuShift);
   }
 }
 gridKey.addEventListener('mousedown', MouseShiftDown);
@@ -206,17 +221,11 @@ gridKey.addEventListener('mousedown', MouseShiftDown);
 function MouseShiftUp(event) {
   const { target } = event;
   if (target.textContent === 'Shift' && !gridKey.classList.contains('Rus')) {
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyEng[i];
-    }
+    LangLowerCase(KeyEng);
   }
 
   if (target.textContent === 'Shift' && gridKey.classList.contains('Rus')) {
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyRu[i];
-    }
+    LangLowerCase(KeyRu);
   }
 }
 gridKey.addEventListener('mouseup', MouseShiftUp);
@@ -229,31 +238,19 @@ function KeyboardShiftDown(event) {
   const { code } = event;
   if (code === 'ShiftLeft' && !gridKey.classList.contains('Rus')) {
     LeftSHift.classList.add('active');
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyEngShift[i].toUpperCase();
-    }
+    LangUpperCase(KeyEngShift);
   }
   if (code === 'ShiftLeft' && gridKey.classList.contains('Rus')) {
     LeftSHift.classList.add('active');
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyRuShift[i].toUpperCase();
-    }
+    LangUpperCase(KeyRuShift);
   }
   if (code === 'ShiftRight' && !gridKey.classList.contains('Rus')) {
     RightShift.classList.add('active');
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyEngShift[i].toUpperCase();
-    }
+    LangUpperCase(KeyEngShift);
   }
   if (code === 'ShiftRight' && gridKey.classList.contains('Rus')) {
     RightShift.classList.add('active');
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyRuShift[i].toUpperCase();
-    }
+    LangUpperCase(KeyRuShift);
   }
 }
 document.addEventListener('keydown', KeyboardShiftDown);
@@ -262,31 +259,19 @@ function KeyboardShiftUp(event) {
   const { code } = event;
   if (code === 'ShiftLeft' && !gridKey.classList.contains('Rus')) {
     LeftSHift.classList.remove('active');
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyEng[i];
-    }
+    LangLowerCase(KeyEng);
   }
   if (code === 'ShiftLeft' && gridKey.classList.contains('Rus')) {
     LeftSHift.classList.remove('active');
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyRu[i];
-    }
+    LangLowerCase(KeyRu);
   }
   if (code === 'ShiftRight' && !gridKey.classList.contains('Rus')) {
     RightShift.classList.remove('active');
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyEng[i];
-    }
+    LangLowerCase(KeyEng);
   }
   if (code === 'ShiftRight' && gridKey.classList.contains('Rus')) {
     RightShift.classList.remove('active');
-    const arr = document.querySelectorAll('.key');
-    for (let i = 0; i < arr.length; i += 1) {
-      arr[i].textContent = KeyRu[i];
-    }
+    LangLowerCase(KeyRu);
   }
 }
 document.addEventListener('keyup', KeyboardShiftUp);
@@ -384,7 +369,9 @@ function FuncKeysDown(event) {
   const { key } = event;
   const arr = document.querySelectorAll('.act');
   arr.forEach((item) => {
-    item.textContent === key ? item.classList.add('active') : false;
+    if (item.textContent === key) {
+      item.classList.add('active');
+    }
   });
 }
 document.addEventListener('keydown', FuncKeysDown);
@@ -393,7 +380,9 @@ function FuncKeysUp(event) {
   const { key } = event;
   const arr = document.querySelectorAll('.act');
   arr.forEach((item) => {
-    item.textContent === key ? item.classList.remove('active') : false;
+    if (item.textContent === key) {
+      item.classList.remove('active');
+    }
   });
 }
 document.addEventListener('keyup', FuncKeysUp);
@@ -401,7 +390,7 @@ document.addEventListener('keyup', FuncKeysUp);
 // BackSpace (Mouse) function______________________________________________________________________
 function MouseBackSpaceDown(event) {
   const { target } = event;
-  if (target.textContent === 'BackSpace') {
+  if (target.textContent === 'Backspace') {
     textAr.value = textAr.value.slice(0, -1);
   }
 }
@@ -416,7 +405,7 @@ function KeyboardBackSpaceDown(event) {
 }
 document.addEventListener('keydown', KeyboardBackSpaceDown);
 
-// Space function _________________________________________________________________________________
+// Space function (mouse) _________________________________________________________________________
 function handSpace(event) {
   const str = event.target;
   if (str.textContent === 'space') {
@@ -425,6 +414,17 @@ function handSpace(event) {
 }
 gridKey.addEventListener('click', handSpace);
 
+// Space function (keyboard)
+const space = document.querySelector('.space');
+function KeyboardSpaceDown() {
+  space.classList.add('active');
+}
+space.addEventListener('keydown', KeyboardSpaceDown);
+
+function KeyboardSpaceUp() {
+  space.classList.remove('active');
+}
+space.addEventListener('keyup', KeyboardSpaceUp);
 
 // CapsLock Keyboard ______________________________________________________________________________
 
@@ -499,6 +499,9 @@ const KeyRightAlt = document.querySelectorAll('.alt')[1];
 
 function KeyboardAltDown(event) {
   const alt = event.code;
+  if (event.altKey) {
+    event.preventDefault();
+  }
   if (alt === 'AltLeft') {
     KeyLeftAlt.classList.add('active');
   }
