@@ -1,4 +1,3 @@
-
 const body = document.querySelector('body');
 // обертка калькулятора
 const grid = document.createElement('div');
@@ -18,14 +17,68 @@ class Key {
     this.but = document.createElement('button');
     this.but.classList.add('key');
     this.but.classList.add('allkey');
-    this.pressed = false;
+    this.lang = false;
     this.but.textContent = text;
+    if (this.but.textContent === 'Backspace') {
+      this.but.classList.remove('key');
+      this.but.classList.add('backSpace');
+      this.but.classList.add('act');
+    }
+    if (this.but.textContent === 'Tab') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('tab');
+    }
+    if (this.but.textContent === 'Delete') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('del');
+    }
+    if (this.but.textContent === 'CapsLock') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('caps');
+    }
+    if (this.but.textContent === 'Enter') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('enter');
+    }
+    if (this.but.textContent === 'Shift') {
+      this.but.classList.remove('key');
+      // this.but.classList.add('act');
+      this.but.classList.add('shift');
+    }
+    if (this.but.textContent === 'Ctrl') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('ctrl');
+    }
+    if (this.but.textContent === 'Win') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('win');
+    }
+    if (this.but.textContent === 'Alt') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('alt');
+    }
+    if (this.but.textContent === 'space') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('space');
+    }
+    if (this.but.textContent === '▲' || this.but.textContent === '◄' || this.but.textContent === '▼' || this.but.textContent === '►') {
+      this.but.classList.remove('key');
+      this.but.classList.add('act');
+      this.but.classList.add('arrow');
+    }
     gridKey.append(this.but);
   }
 }
 
-
-const KeyObj1 = {
+const KeyObj = {
   KeyKov: new Key('`'),
   Key1: new Key('1'),
   Key2: new Key('2'),
@@ -39,308 +92,206 @@ const KeyObj1 = {
   KeyNull: new Key('0'),
   KeyMinus: new Key('-'),
   keyRes: new Key('='),
-};
-
-
-//  клавиша BackSpace
-const KeyBackspace = document.createElement('button');
-KeyBackspace.classList.add('backSpace');
-KeyBackspace.classList.add('act');
-KeyBackspace.textContent = 'Backspace';
-gridKey.append(KeyBackspace);
-// клавиша Tab
-const KeyTab = document.createElement('button');
-KeyTab.classList.add('tab');
-KeyTab.classList.add('act');
-KeyTab.textContent = 'Tab';
-gridKey.append(KeyTab);
-
-const KeyObj2 = {
+  KeyBackspace: new Key('Backspace'),
+  KeyTab: new Key('Tab'),
   KeyQ: new Key('q'),
   KeyW: new Key('w'),
-  KeyE: new Key('e'),
+  keyE: new Key('e'),
   KeyR: new Key('r'),
   KeyT: new Key('t'),
-  KeyY: new Key('y'),
+  keyY: new Key('y'),
   KeyU: new Key('u'),
   KeyI: new Key('i'),
-  KeyO: new Key('o'),
+  keyO: new Key('o'),
   KeyP: new Key('p'),
-  KeyLeftBracets: new Key('['),
-  KeyRigthBracets: new Key(']'),
-  KeyLefthSlash: new Key('\\'),
-};
-
-// клавиша Del
-const KeyDel = document.createElement('button');
-KeyDel.classList.add('del');
-KeyDel.classList.add('act');
-KeyDel.textContent = 'Del';
-gridKey.append(KeyDel);
-
-// клавиша CapsLk
-const KeyCapsLk = document.createElement('button');
-KeyCapsLk.classList.add('caps');
-KeyCapsLk.classList.add('act');
-KeyCapsLk.textContent = 'CapsLock';
-gridKey.append(KeyCapsLk);
-
-const KeyObj3 = {
+  keyBrL: new Key('['),
+  KeyBrR: new Key(']'),
+  KeyESc: new Key('\\'),
+  keyDEl: new Key('Delete'),
+  keyCaps: new Key('CapsLock'),
   KeyA: new Key('a'),
   KeyS: new Key('s'),
-  KeyD: new Key('d'),
+  keyD: new Key('d'),
   KeyF: new Key('f'),
   KeyG: new Key('g'),
-  KeyH: new Key('h'),
+  keyH: new Key('h'),
   KeyJ: new Key('j'),
   KeyK: new Key('k'),
-  KeyL: new Key('l'),
-  KeySemiColon: new Key(';'),
-  KeyQuotes: new Key("'"),
-};
-
-// клавиша Enter
-const KeyEnter = document.createElement('button');
-KeyEnter.classList.add('enter');
-KeyEnter.classList.add('act');
-KeyEnter.textContent = 'Enter';
-gridKey.append(KeyEnter);
-
-// клавиша LeftShift
-const KeyLeftShift = document.createElement('button');
-KeyLeftShift.classList.add('shift');
-// KeyLeftShift.classList.add('act');
-KeyLeftShift.textContent = 'Shift';
-gridKey.append(KeyLeftShift);
-
-const KeyObj4 = {
-  KeyZ: new Key('z'),
-  KeyX: new Key('x'),
-  KeyCapsLk: new Key('c'),
-  KeyV: new Key('v'),
-  KeyB: new Key('b'),
-  KeyN: new Key('n'),
-  KeyM: new Key('m'),
-  KeyComma: new Key(','),
-  KeyPoint: new Key('.'),
-  KeyRigthSlash: new Key('/'),
+  keyL: new Key('l'),
+  KeyPoint1: new Key(';'),
+  KeyPoint: new Key("'"),
+  KeyEnter: new Key('Enter'),
+  keyLeftShift: new Key('Shift'),
+  keyZ: new Key('z'),
+  keyX: new Key('x'),
+  keyC: new Key('c'),
+  keyV: new Key('v'),
+  keyB: new Key('b'),
+  keyN: new Key('n'),
+  keyM: new Key('m'),
+  keyComma: new Key(','),
+  keyDote: new Key('.'),
+  keySlash: new Key('/'),
   KeyArrowUp: new Key('▲'),
+  keyRightShift: new Key('Shift'),
+  KeyLeftCtrl: new Key('Ctrl'),
+  KeyWin: new Key('Win'),
+  KeyLeftAlt: new Key('Alt'),
+  KeySpace: new Key('space'),
+  KeyRightAlt: new Key('Alt'),
+  KeyLeftArrow: new Key('◄'),
+  KeyDownArrow: new Key('▼'),
+  KeyRightArrow: new Key('►'),
+  KeyRightCtrl: new Key('Ctrl'),
 };
 
-// клавиша RightShift
-const KeyRightShift = document.createElement('button');
-KeyRightShift.classList.add('shift');
-// KeyRightShift.classList.add('act');
-KeyRightShift.style.marginLeft = '6px';
-KeyRightShift.textContent = 'Shift';
-gridKey.append(KeyRightShift);
+// Ru_______________________________________________________________________________
+const KeyRu = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
+  'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '\\', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.'];
+// RU + shift_______________________________________________________________________
+const KeyRuShift = ['ё', '!', '"', '№', ';', '%', ':', '?', '*', '(', ')', '_', '+',
+  'й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ', '/', 'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', 'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', ','];
+// Eng______________________________________________________________________________
+const KeyEng = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
+  'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', '\\', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", 'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'];
+// Eng + shift______________________________________________________________________
+const KeyEngShift = ['~', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '+',
+  'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '{', '}', '|', 'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ':', '"', 'z', 'x', 'c', 'v', 'b', 'n', 'm', '<', '>', '?'];
 
-/* клавиша LeftCtrl */
-const KeyLeftCtrl = document.createElement('button');
-KeyLeftCtrl.classList.add('ctrl');
-// KeyLeftCtrl.classList.add('act');
-KeyLeftCtrl.textContent = 'Ctrl';
-gridKey.append(KeyLeftCtrl);
-
-/* клавиша Win */
-const KeyWin = document.createElement('button');
-KeyWin.classList.add('win');
-KeyWin.classList.add('act');
-KeyWin.textContent = 'Win';
-gridKey.append(KeyWin);
-
-/* клавиша LeftAlt */
-const KeyLeftAlt = document.createElement('button');
-KeyLeftAlt.classList.add('alt');
-// KeyLeftAlt.classList.add('act');
-KeyLeftAlt.textContent = 'Alt';
-gridKey.append(KeyLeftAlt);
-
-/* клавиша Space */
-const KeySpace = document.createElement('button');
-KeySpace.classList.add('space');
-KeySpace.classList.add('act');
-KeySpace.textContent = "''";
-gridKey.append(KeySpace);
-
-/* клавиша RightAlt */
-const KeyRightAlt = document.createElement('button');
-KeyRightAlt.classList.add('alt');
-// KeyRightAlt.classList.add('act');
-KeyRightAlt.textContent = 'Alt';
-gridKey.append(KeyRightAlt);
-
-const KeyObj5 = {
-  KeyArrowLeft: new Key('◄'),
-  KeyArrowDown: new Key('▼'),
-  KeyArrowRight: new Key('►'),
-
-};
-
-/* клавиша RightCtrl */
-const KeyRightCtrl = document.createElement('button');
-KeyRightCtrl.classList.add('ctrl');
-// KeyRightCtrl.classList.add('act');
-KeyRightCtrl.style.cssText = `margin-left:6px;
-width:60px
-`;
-KeyRightCtrl.textContent = 'Ctrl';
-gridKey.append(KeyRightCtrl);
-
-/* ___________________________________________________ */
-
-/* Mouse action_______________________________________ */
+document.querySelectorAll('.shift')[1].style.marginLeft = '6px';
+document.querySelectorAll('.ctrl')[1].style.marginLeft = '6px';
 
 
-const arrActionKey = gridKey.querySelectorAll('.act');
-arrActionKey.forEach((item) => item.classList.add('allkey'));
+// Replace lang.__________________________________________________________________________________
+function MouseDown(event) {
+  const targ = event.target;
+  if (targ.textContent === 'Win') {
+    targ.classList.toggle('ru');
+    gridKey.classList.toggle('Rus');
 
-/* функия вывода информации с клавиш */
-function handler(event) {
+    if (targ.classList.contains('ru')) {
+      const arr = document.querySelectorAll('.key');
+      for (let i = 0; i < arr.length; i += 1) {
+        arr[i].textContent = KeyRu[i];
+      }
+    } else if (!targ.classList.contains('ru')) {
+      const arr = document.querySelectorAll('.key');
+      for (let i = 0; i < arr.length; i += 1) {
+        arr[i].textContent = KeyEng[i];
+      }
+    }
+  }
+}
+gridKey.addEventListener('click', MouseDown);
+
+// Mouse Shift Down_______________________________________________________________________________
+function MouseShiftDown(event) {
   const { target } = event;
-  // const button = target.closest('button')
-  if (target.classList.contains('key')) {
-    textAr.value += target.textContent;
+  if (target.textContent === 'Shift' && !gridKey.classList.contains('Rus')) {
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyEngShift[i].toUpperCase();
+    }
+  }
+
+  if (target.textContent === 'Shift' && gridKey.classList.contains('Rus')) {
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyRuShift[i].toUpperCase();
+    }
   }
 }
-gridKey.addEventListener('click', handler);
+gridKey.addEventListener('mousedown', MouseShiftDown);
 
-/* анимация нажатия на клавишу */
-function hahdlerKeyDown(event) {
-  const cursDown = event.target;
-  const array = gridKey.querySelectorAll('.allkey');
-  return array.forEach((item) => (item.textContent === cursDown.textContent
-    ? item.classList.add('active')
-    : false));
-}
-gridKey.addEventListener('mousedown', hahdlerKeyDown);
+function MouseShiftUp(event) {
+  const { target } = event;
+  if (target.textContent === 'Shift' && !gridKey.classList.contains('Rus')) {
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyEng[i];
+    }
+  }
 
-function hahdlerKeyUp(event) {
-  const cursUp = event.target;
-  cursUp.classList.remove('active');
-}
-gridKey.addEventListener('mouseup', hahdlerKeyUp);
-
-/* функиция BackSpace */
-function handBackspace(event) {
-  const str = event.target;
-  if (str.textContent === 'Backspace')(textAr.value = textAr.value.slice(0, -1));
-}
-gridKey.addEventListener('click', handBackspace);
-
-/* функция пробела */
-function handSpace(event) {
-  const str = event.target;
-  if (str.textContent === "''") {
-    textAr.value += ' ';
+  if (target.textContent === 'Shift' && gridKey.classList.contains('Rus')) {
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyRu[i];
+    }
   }
 }
-gridKey.addEventListener('click', handSpace);
+gridKey.addEventListener('mouseup', MouseShiftUp);
 
-//  Keyboard_________________________________________________________
-
-//  Вывод клафиш с физ. клавиатуры;
-function keyboardKeyDown(event) {
-  const keyboardKey = event.key;
-  if (
-    keyboardKey !== 'Shift'
-    && keyboardKey !== 'Backspace'
-    && keyboardKey !== 'Tab'
-    && keyboardKey !== 'CapsLock'
-    && keyboardKey !== 'Control'
-    && keyboardKey !== 'Ctrl'
-    && keyboardKey !== 'Meta'
-    && keyboardKey !== 'Alt'
-    && keyboardKey !== 'Enter'
-    && keyboardKey !== 'Delete'
-    && keyboardKey !== 'ArrowLeft'
-    && keyboardKey !== 'ArrowRight'
-    && keyboardKey !== 'ArrowUp'
-    && keyboardKey !== 'ArrowDown'
-  ) {
-    textAr.value += keyboardKey;
-  }
-  const array = document.querySelectorAll('.allkey');
-  array.forEach((item) => (item.textContent === keyboardKey ? item.classList.add('active') : false));
-}
-document.addEventListener('keydown', keyboardKeyDown);
-
-
-function KeyboardKeyUp(event) {
-  const keyboarKey = event.key;
-  const array = document.querySelectorAll('.allkey');
-  array.forEach((item) => (item.textContent === keyboarKey ? item.classList.remove('active') : false));
-}
-document.addEventListener('keyup', KeyboardKeyUp);
-
-/* Backspace___________________________________________ */
-function keyboardBackSpace(event) {
-  const backSpace = event.key;
-  if (backSpace === 'Backspace') {
-    textAr.value = textAr.value.slice(0, -1);
-  }
-}
-document.addEventListener('keydown', keyboardBackSpace);
-
-// Space_______________________________________________________
-
-function KeyboardSpace(event) {
-  const space = event.code;
-  if (space === 'Space') {
-    const but = document.querySelector('.space');
-    but.classList.add('active');
-  }
-}
-document.addEventListener('keydown', KeyboardSpace);
-
-function KeyboardSpaceUp(event) {
-  const space = event.code;
-  if (space === 'Space') {
-    const but = document.querySelector('.space');
-    but.classList.remove('active');
-  }
-}
-document.addEventListener('keyup', KeyboardSpaceUp);
-
-// Shift__________________________________________________________________________________-
+// Keyboard Shift_______________________________________________________________________________
+const LeftSHift = document.querySelectorAll('.shift')[0];
+const RightShift = document.querySelectorAll('.shift')[1];
 
 function KeyboardShiftDown(event) {
-  const shift = event.code;
-  if (shift === 'ShiftLeft') {
-    KeyLeftShift.classList.add('active');
+  const { code } = event;
+  if (code === 'ShiftLeft' && !gridKey.classList.contains('Rus')) {
+    LeftSHift.classList.add('active');
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyEngShift[i].toUpperCase();
+    }
   }
-  if (shift === 'ShiftRight') {
-    KeyRightShift.classList.add('active');
+  if (code === 'ShiftLeft' && gridKey.classList.contains('Rus')) {
+    LeftSHift.classList.add('active');
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyRuShift[i].toUpperCase();
+    }
+  }
+  if (code === 'ShiftRight' && !gridKey.classList.contains('Rus')) {
+    RightShift.classList.add('active');
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyEngShift[i].toUpperCase();
+    }
+  }
+  if (code === 'ShiftRight' && gridKey.classList.contains('Rus')) {
+    RightShift.classList.add('active');
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyRuShift[i].toUpperCase();
+    }
   }
 }
 document.addEventListener('keydown', KeyboardShiftDown);
 
 function KeyboardShiftUp(event) {
-  const shift = event.code;
-  if (shift === 'ShiftLeft') {
-    KeyLeftShift.classList.remove('active');
+  const { code } = event;
+  if (code === 'ShiftLeft' && !gridKey.classList.contains('Rus')) {
+    LeftSHift.classList.remove('active');
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyEng[i];
+    }
   }
-  if (shift === 'ShiftRight') {
-    KeyRightShift.classList.remove('active');
+  if (code === 'ShiftLeft' && gridKey.classList.contains('Rus')) {
+    LeftSHift.classList.remove('active');
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyRu[i];
+    }
+  }
+  if (code === 'ShiftRight' && !gridKey.classList.contains('Rus')) {
+    RightShift.classList.remove('active');
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyEng[i];
+    }
+  }
+  if (code === 'ShiftRight' && gridKey.classList.contains('Rus')) {
+    RightShift.classList.remove('active');
+    const arr = document.querySelectorAll('.key');
+    for (let i = 0; i < arr.length; i += 1) {
+      arr[i].textContent = KeyRu[i];
+    }
   }
 }
 document.addEventListener('keyup', KeyboardShiftUp);
 
-function ShiftMouseDown(event) {
-  const cursDown = event.target;
-  cursDown.classList.add('active');
-}
-KeyLeftShift.addEventListener('mousedown', ShiftMouseDown);
-
-function ShiftMouseUp(event) {
-  const cursUp = event.target;
-  cursUp.classList.add('active');
-}
-KeyRightShift.addEventListener('mousedown', ShiftMouseUp);
-
-
-// Capslock Mouse _____________________________________________________________________________
-
+// Mouse CpasLock _______________________________________________________________________________
 let caps = false;
 function MouseCapsDown(event) {
   const codes = event.target;
@@ -368,6 +319,111 @@ function MouseCapsUp(event) {
   }
 }
 gridKey.addEventListener('click', MouseCapsUp);
+
+// Key output function__________________________________________________________________________
+function KeyOutput(event) {
+  const { target } = event;
+  if (target.classList.contains('key')) {
+    textAr.value += target.textContent;
+  }
+}
+gridKey.addEventListener('click', KeyOutput);
+
+// Animation (Mouse) function___________________________________________________________________
+function KeyAnimationDown(event) {
+  const { target } = event;
+  if (target.classList.contains('allkey')) {
+    target.classList.add('active');
+  }
+}
+gridKey.addEventListener('mousedown', KeyAnimationDown);
+
+function KeyAnimationUp(event) {
+  const { target } = event;
+  target.classList.remove('active');
+}
+gridKey.addEventListener('mouseup', KeyAnimationUp);
+
+// Animation (Keyboard) function_________________________________________________________________
+function keyboardKeyDown(event) {
+  const keyboardKey = event.key;
+  if (
+    keyboardKey !== 'Shift'
+    && keyboardKey !== 'Backspace'
+    && keyboardKey !== 'Tab'
+    && keyboardKey !== 'CapsLock'
+    && keyboardKey !== 'Control'
+    && keyboardKey !== 'Ctrl'
+    && keyboardKey !== 'Meta'
+    && keyboardKey !== 'Alt'
+    && keyboardKey !== 'AltGraph'
+    && keyboardKey !== 'Enter'
+    && keyboardKey !== 'Delete'
+    && keyboardKey !== 'ArrowLeft'
+    && keyboardKey !== 'ArrowRight'
+    && keyboardKey !== 'ArrowUp'
+    && keyboardKey !== 'ArrowDown'
+  ) {
+    textAr.value += keyboardKey;
+  }
+  const array = document.querySelectorAll('.key');
+  array.forEach((item) => (item.textContent === keyboardKey ? item.classList.add('active') : false));
+}
+document.addEventListener('keydown', keyboardKeyDown);
+
+
+function KeyboardKeyUp(event) {
+  const keyboarKey = event.key;
+  const array = document.querySelectorAll('.key');
+  array.forEach((item) => (item.textContent === keyboarKey ? item.classList.remove('active') : false));
+}
+document.addEventListener('keyup', KeyboardKeyUp);
+
+// Animation functional keys_____________________________________________________________________
+function FuncKeysDown(event) {
+  const { key } = event;
+  const arr = document.querySelectorAll('.act');
+  arr.forEach((item) => {
+    item.textContent === key ? item.classList.add('active') : false;
+  });
+}
+document.addEventListener('keydown', FuncKeysDown);
+
+function FuncKeysUp(event) {
+  const { key } = event;
+  const arr = document.querySelectorAll('.act');
+  arr.forEach((item) => {
+    item.textContent === key ? item.classList.remove('active') : false;
+  });
+}
+document.addEventListener('keyup', FuncKeysUp);
+
+// BackSpace (Mouse) function______________________________________________________________________
+function MouseBackSpaceDown(event) {
+  const { target } = event;
+  if (target.textContent === 'BackSpace') {
+    textAr.value = textAr.value.slice(0, -1);
+  }
+}
+document.addEventListener('click', MouseBackSpaceDown);
+
+// BackSpace (keyboard) function _________________________________________________________________
+function KeyboardBackSpaceDown(event) {
+  const { code } = event;
+  if (code === 'Backspace') {
+    textAr.value = textAr.value.slice(0, -1);
+  }
+}
+document.addEventListener('keydown', KeyboardBackSpaceDown);
+
+// Space function _________________________________________________________________________________
+function handSpace(event) {
+  const str = event.target;
+  if (str.textContent === 'space') {
+    textAr.value += ' ';
+  }
+}
+gridKey.addEventListener('click', handSpace);
 
 
 // CapsLock Keyboard ______________________________________________________________________________
@@ -401,6 +457,8 @@ function KeyboardCapsUp(event) {
 document.addEventListener('keydown', KeyboardCapsUp);
 
 // Ctrl________________________________________________________________________________
+const KeyLeftCtrl = document.querySelectorAll('.ctrl')[0];
+const KeyRightCtrl = document.querySelectorAll('.ctrl')[1];
 function KeyboardCtrltDown(event) {
   const ctrl = event.code;
   if (ctrl === 'ControlLeft') {
@@ -436,6 +494,8 @@ function CtrltRightMouseDown(event) {
 KeyRightCtrl.addEventListener('mousedown', CtrltRightMouseDown);
 
 // ALt__________________________________________________________________________________
+const KeyLeftAlt = document.querySelectorAll('.alt')[0];
+const KeyRightAlt = document.querySelectorAll('.alt')[1];
 
 function KeyboardAltDown(event) {
   const alt = event.code;
@@ -472,23 +532,13 @@ function AltRightMouseDown(event) {
 KeyRightAlt.addEventListener('mousedown', AltRightMouseDown);
 
 // Delete___________________________________________________________________________________________
-
 function DeleteKeyboardDown(event) {
   const del = event.code;
   if (del === 'Delete') {
-    KeyDel.classList.add('active');
     textAr.value = textAr.value.slice(0, -1);
   }
 }
 document.addEventListener('keydown', DeleteKeyboardDown);
-
-function DeleteKeyboardUp(event) {
-  const del = event.code;
-  if (del === 'Delete') {
-    KeyDel.classList.remove('active');
-  }
-}
-document.addEventListener('keyup', DeleteKeyboardUp);
 
 // Key arrow__________________________________________________________________________
 
@@ -508,4 +558,4 @@ function KeyboardArrowDown(event) {
     textAr.value += '▼';
   }
 }
-document.addEventListener('keydown', KeyboardArrowDown)
+document.addEventListener('keydown', KeyboardArrowDown);
