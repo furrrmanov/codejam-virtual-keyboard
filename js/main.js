@@ -191,20 +191,6 @@ function LangLowerCase(a) {
 
 // Replace lanuage__________________________________________________________________________________
 const KeyLang = document.querySelector('.win');
-// function MouseDown(event) {
-//   const targ = event.target;
-//   if (targ.textContent === 'Win') {
-//     targ.classList.toggle('ru');
-//     gridKey.classList.toggle('Rus');
-
-//     if (targ.classList.contains('ru')) {
-//       ReplaceLang(KeyRu);
-//     } else if (!targ.classList.contains('ru')) {
-//       ReplaceLang(KeyEng);
-//     }
-//   }
-// }
-// gridKey.addEventListener('click', MouseDown);
 
 
 // Mouse Shift Down_______________________________________________________________________________
@@ -615,4 +601,4 @@ function MouseReplaceLang(event) {
     KeyLang.textContent = 'Eng';
   }
 }
-gridKey.addEventListener('click', MouseReplaceLang);
+KeyLang.addEventListener('click', MouseReplaceLang);
