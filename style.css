@@ -219,6 +219,11 @@ textarea {
   color: rgba(76, 14, 138, 0);
 }
 
+.shift:hover,
+.alt:hover {
+  background-color: rgba(76, 14, 138, 0.5);
+}
+
 .act {
   font-weight: bold;
 }
@@ -229,7 +234,7 @@ textarea {
 
 .active {
   border-radius: 20px;
-  opacity: 50%;
+  opacity: 40%;
 }
 
 .pressed {

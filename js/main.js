@@ -66,7 +66,7 @@ class Key {
     }
     if (this.but.textContent === 'space') {
       this.but.classList.remove('key');
-      this.but.classList.add('act');
+      // this.but.classList.add('act');
       this.but.classList.add('space');
     }
     if (this.but.textContent === '▲' || this.but.textContent === '◄' || this.but.textContent === '▼' || this.but.textContent === '►') {
@@ -149,6 +149,7 @@ function initKey(obj) {
   return obj;
 }
 initKey(KeyObj);
+
 
 // Ru_______________________________________________________________________________
 const KeyRu = ['ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=',
@@ -416,15 +417,21 @@ gridKey.addEventListener('click', handSpace);
 
 // Space function (keyboard)
 const space = document.querySelector('.space');
-function KeyboardSpaceDown() {
-  space.classList.add('active');
+function KeyboardSpaceDown(event) {
+  const cod = event.code;
+  if (cod === 'Space') {
+    space.classList.add('active');
+  }
 }
-space.addEventListener('keydown', KeyboardSpaceDown);
+document.addEventListener('keydown', KeyboardSpaceDown);
 
-function KeyboardSpaceUp() {
-  space.classList.remove('active');
+function KeyboardSpaceUp(event) {
+  const cod = event.code;
+  if (cod === 'Space') {
+    space.classList.remove('active');
+  }
 }
-space.addEventListener('keyup', KeyboardSpaceUp);
+document.addEventListener('keyup', KeyboardSpaceUp);
 
 // CapsLock Keyboard ______________________________________________________________________________
 
@@ -459,6 +466,7 @@ document.addEventListener('keydown', KeyboardCapsUp);
 // Ctrl________________________________________________________________________________
 const KeyLeftCtrl = document.querySelectorAll('.ctrl')[0];
 const KeyRightCtrl = document.querySelectorAll('.ctrl')[1];
+
 function KeyboardCtrltDown(event) {
   const ctrl = event.code;
   if (ctrl === 'ControlLeft') {
@@ -493,7 +501,7 @@ function CtrltRightMouseDown(event) {
 }
 KeyRightCtrl.addEventListener('mousedown', CtrltRightMouseDown);
 
-// ALt__________________________________________________________________________________
+// Alt keyboard__________________________________________________________________________________
 const KeyLeftAlt = document.querySelectorAll('.alt')[0];
 const KeyRightAlt = document.querySelectorAll('.alt')[1];
 
@@ -522,19 +530,8 @@ function KeyboardAltUp(event) {
 }
 document.addEventListener('keyup', KeyboardAltUp);
 
-function AltLeftMouseDown(event) {
-  const cursDown = event.target;
-  cursDown.classList.add('active');
-}
-KeyLeftAlt.addEventListener('mousedown', AltLeftMouseDown);
 
-function AltRightMouseDown(event) {
-  const cursDown = event.target;
-  cursDown.classList.add('active');
-}
-KeyRightAlt.addEventListener('mousedown', AltRightMouseDown);
-
-// Delete___________________________________________________________________________________________
+// Delete keyboard___________________________________________________________________
 function DeleteKeyboardDown(event) {
   const del = event.code;
   if (del === 'Delete') {
