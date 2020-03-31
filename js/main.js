@@ -189,6 +189,12 @@ function LangLowerCase(a) {
   }
 }
 
+// function Focus
+function setFocus() {
+  textAr.focus();
+}
+setFocus();
+
 // Replace lanuage__________________________________________________________________________________
 const KeyLang = document.querySelector('.win');
 
@@ -297,6 +303,7 @@ gridKey.addEventListener('click', MouseCapsUp);
 function KeyOutput(event) {
   const { target } = event;
   if (target.classList.contains('key')) {
+    setFocus();
     textAr.value += target.textContent;
   }
 }
@@ -337,7 +344,8 @@ function keyboardKeyDown(event) {
     && keyboardKey !== 'ArrowUp'
     && keyboardKey !== 'ArrowDown'
   ) {
-    textAr.value += keyboardKey;
+    setFocus();
+    textAr.value += keyboardKey.slice(0, -1);
   }
   const array = document.querySelectorAll('.key');
   array.forEach((item) => (item.textContent === keyboardKey ? item.classList.add('active') : false));
@@ -602,3 +610,5 @@ function MouseReplaceLang(event) {
   }
 }
 KeyLang.addEventListener('click', MouseReplaceLang);
+
+
