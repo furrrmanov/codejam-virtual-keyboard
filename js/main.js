@@ -54,7 +54,7 @@ class Key {
       this.but.classList.add('act');
       this.but.classList.add('ctrl');
     }
-    if (this.but.textContent === 'Win') {
+    if (this.but.textContent === 'Eng' || this.but.textContent === 'Ru') {
       this.but.classList.remove('key');
       this.but.classList.add('act');
       this.but.classList.add('win');
@@ -135,7 +135,7 @@ const KeyObj = {
   KeyArrowUp: new Key('▲'),
   keyRightShift: new Key('Shift'),
   KeyLeftCtrl: new Key('Ctrl'),
-  KeyWin: new Key('Win'),
+  KeyWin: new Key('Eng'),
   KeyLeftAlt: new Key('Alt'),
   KeySpace: new Key('space'),
   KeyRightAlt: new Key('Alt'),
@@ -190,20 +190,21 @@ function LangLowerCase(a) {
 }
 
 // Replace lanuage__________________________________________________________________________________
-function MouseDown(event) {
-  const targ = event.target;
-  if (targ.textContent === 'Win') {
-    targ.classList.toggle('ru');
-    gridKey.classList.toggle('Rus');
+const KeyLang = document.querySelector('.win');
+// function MouseDown(event) {
+//   const targ = event.target;
+//   if (targ.textContent === 'Win') {
+//     targ.classList.toggle('ru');
+//     gridKey.classList.toggle('Rus');
 
-    if (targ.classList.contains('ru')) {
-      ReplaceLang(KeyRu);
-    } else if (!targ.classList.contains('ru')) {
-      ReplaceLang(KeyEng);
-    }
-  }
-}
-gridKey.addEventListener('click', MouseDown);
+//     if (targ.classList.contains('ru')) {
+//       ReplaceLang(KeyRu);
+//     } else if (!targ.classList.contains('ru')) {
+//       ReplaceLang(KeyEng);
+//     }
+//   }
+// }
+// gridKey.addEventListener('click', MouseDown);
 
 
 // Mouse Shift Down_______________________________________________________________________________
@@ -541,21 +542,77 @@ function DeleteKeyboardDown(event) {
 document.addEventListener('keydown', DeleteKeyboardDown);
 
 // Key arrow__________________________________________________________________________
+const arrowUp = document.querySelectorAll('.arrow')[0];
+const arrowL = document.querySelectorAll('.arrow')[1];
+const arrowDown = document.querySelectorAll('.arrow')[2];
+const arrowR = document.querySelectorAll('.arrow')[3];
 
 function KeyboardArrowDown(event) {
   const arrow = event.code;
 
   if (arrow === 'ArrowLeft') {
+    arrowL.classList.add('active');
     textAr.value += '◄';
   }
   if (arrow === 'ArrowUp') {
+    arrowUp.classList.add('active');
     textAr.value += '▲';
   }
   if (arrow === 'ArrowRight') {
+    arrowR.classList.add('active');
     textAr.value += '►';
   }
   if (arrow === 'ArrowDown') {
+    arrowDown.classList.add('active');
     textAr.value += '▼';
   }
 }
 document.addEventListener('keydown', KeyboardArrowDown);
+
+function KeyboardArrowUp(event) {
+  const arrow = event.code;
+
+  if (arrow === 'ArrowLeft') {
+    arrowL.classList.remove('active');
+  }
+  if (arrow === 'ArrowUp') {
+    arrowUp.classList.remove('active');
+  }
+  if (arrow === 'ArrowRight') {
+    arrowR.classList.remove('active');
+  }
+  if (arrow === 'ArrowDown') {
+    arrowDown.classList.remove('active');
+  }
+}
+document.addEventListener('keyup', KeyboardArrowUp);
+
+// Replace language (keyboard)_________________________________________________________
+function handler(event) {
+  if (event.code === 'ShiftLeft' && event.ctrlKey) {
+    gridKey.classList.toggle('Rus');
+    KeyLang.textContent = 'Ru';
+    ReplaceLang(KeyRu);
+  }
+}
+document.addEventListener('keydown', handler);
+
+function handlerReplaceLang(event) {
+  if (event.code === 'ShiftLeft' && event.ctrlKey && gridKey.classList.contains('Rus')) {
+    KeyLang.textContent = 'Eng';
+    // ReplaceLang(KeyRu);
+  }
+}
+document.addEventListener('keydown', handlerReplaceLang);
+
+function MouseReplaceLang(event) {
+  const targ = event.target;
+  if (targ.textContent === 'Eng') {
+    ReplaceLang(KeyEng);
+    KeyLang.textContent = 'Ru';
+  } else {
+    ReplaceLang(KeyRu);
+    KeyLang.textContent = 'Eng';
+  }
+}
+gridKey.addEventListener('click', MouseReplaceLang);
