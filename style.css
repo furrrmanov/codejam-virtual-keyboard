@@ -4,6 +4,16 @@ body {
   background-color: rgba(4, 202, 136, 0.384);
 }
 
+.description {
+  position: absolute;
+  list-style: none;
+  color: rgb(92, 43, 133);
+  font-weight: bold;
+  font-size: 18px;
+  margin-left: 250px;
+  top: 70px;
+}
+
 .grid {
   display: flex;
   flex-direction: column;

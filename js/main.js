@@ -1,4 +1,9 @@
 const body = document.querySelector('body');
+// Description
+const description = document.createElement('li');
+description.classList.add('description');
+description.textContent = 'Смена языка Ctrl+Shift (создавалось для Windows)';
+body.append(description);
 // обертка калькулятора
 const grid = document.createElement('div');
 grid.classList.add('grid');
@@ -406,6 +411,7 @@ function handSpace(event) {
   const str = event.target;
   if (str.textContent === 'space') {
     textAr.value += ' ';
+    setFocus();
   }
 }
 gridKey.addEventListener('click', handSpace);
@@ -611,4 +617,32 @@ function MouseReplaceLang(event) {
 }
 KeyLang.addEventListener('click', MouseReplaceLang);
 
+// function Enter (mouse)
+function MouseEnter(event) {
+  const targ = event.target;
+  if (targ.textContent === 'Enter') {
+    textAr.value += '\r\n';
+    setFocus();
+  }
+}
+gridKey.addEventListener('click', MouseEnter);
 
+// function Tab(mouse)
+function MouseTab(event) {
+  const targ = event.target;
+  if (targ.textContent === 'Tab') {
+    textAr.value += '   ';
+    setFocus();
+  }
+}
+gridKey.addEventListener('click', MouseTab);
+
+// function Tab(keyboard)
+function KeyboardTab(event) {
+  const targ = event.code;
+  if (targ === 'Tab') {
+    textAr.value += '   ';
+    setFocus();
+  }
+}
+document.addEventListener('keydown', KeyboardTab);
