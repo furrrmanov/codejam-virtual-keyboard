@@ -569,6 +569,7 @@ function KeyboardArrowDown(event) {
 }
 document.addEventListener('keydown', KeyboardArrowDown);
 
+
 function KeyboardArrowUp(event) {
   const arrow = event.code;
 
@@ -586,6 +587,25 @@ function KeyboardArrowUp(event) {
   }
 }
 document.addEventListener('keyup', KeyboardArrowUp);
+
+// Key mouse__________________________________________________________________________
+function MouseArrow(event) {
+  const arrow = event.target;
+
+  if (arrow.textContent === '◄') {
+    textAr.value += '◄';
+  }
+  if (arrow.textContent === '▲') {
+    textAr.value += '▲';
+  }
+  if (arrow.textContent === '►') {
+    textAr.value += '►';
+  }
+  if (arrow.textContent === '▼') {
+    textAr.value += '▼';
+  }
+}
+gridKey.addEventListener('click', MouseArrow);
 
 // Replace language (keyboard)_________________________________________________________
 function handler(event) {
