@@ -666,3 +666,18 @@ function KeyboardTab(event) {
   }
 }
 document.addEventListener('keydown', KeyboardTab);
+
+// Local Storage(save text in textArea)______________________________________
+textAr.value = localStorage.getItem('area');
+textAr.oninput = () => {
+  localStorage.setItem('area', textAr.value);
+};
+
+const rus = 'йцукенгшщзхъфывапролджэячсмитьбю';
+window.addEventListener('load', () => {
+  if (rus.includes(textAr.value[textAr.value.length - 1])) {
+    ReplaceLang(KeyRu);
+  } else {
+    ReplaceLang(KeyEng);
+  }
+});
