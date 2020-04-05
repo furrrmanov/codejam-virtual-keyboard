@@ -322,6 +322,11 @@ function KeyAnimationDown(event) {
 }
 gridKey.addEventListener('mousedown', KeyAnimationDown);
 
+gridKey.addEventListener('mouseout', (event) => {
+  const targ = event.target;
+  targ.classList.remove('active');
+});
+
 function KeyAnimationUp(event) {
   const { target } = event;
   target.classList.remove('active');
@@ -666,7 +671,7 @@ function KeyboardTab(event) {
 }
 document.addEventListener('keydown', KeyboardTab);
 
-// Local Storage(save text in textArea)______________________________________
+// LocalStorage(save text in textArea)______________________________________
 textAr.value = localStorage.getItem('area');
 textAr.oninput = () => {
   localStorage.setItem('area', textAr.value);
@@ -677,12 +682,15 @@ window.addEventListener('beforeunload', () => {
   localStorage.setItem('lang', KeyLang.textContent);
 });
 
-window.addEventListener('load', () => {
-  localStorage.getItem('lang', KeyLang.textContent);
-  if (localStorage.getItem('lang', KeyLang.textContent) === 'Eng') {
-    ReplaceLang(KeyRu);
-  }
-  if (localStorage.getItem('lang', KeyLang.textContent) === 'Ru') {
-    ReplaceLang(KeyEng);
-  }
-});
+// // LocalStorage (save Language)_________________________________________________
+// window.addEventListener('load', () => {
+//   localStorage.getItem('lang', KeyLang.textContent);
+//   if (localStorage.getItem('lang', KeyLang.textContent) === 'Eng') {
+//     ReplaceLang(KeyRu);
+//     localStorage.clear();
+//   }
+//   if (localStorage.getItem('lang', KeyLang.textContent) === 'Ru') {
+//     ReplaceLang(KeyEng);
+//     localStorage.clear();
+//   }
+// });

@@ -75,6 +75,7 @@ textarea {
 }
 
 .key:hover {
+  cursor: pointer;
   background-color: rgba(131, 175, 43, 0.534);
   color: rgb(117, 20, 214);
 }
