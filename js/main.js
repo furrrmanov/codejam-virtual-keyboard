@@ -670,25 +670,3 @@ function KeyboardTab(event) {
   }
 }
 document.addEventListener('keydown', KeyboardTab);
-
-// LocalStorage(save text in textArea)______________________________________
-// textAr.value = localStorage.getItem('area');
-// textAr.oninput = () => {
-//   localStorage.setItem('area', textAr.value);
-// };
-
-KeyLang.textContent = localStorage.getItem('lang');
-window.addEventListener('beforeunload', () => {
-  localStorage.setItem('lang', KeyLang.textContent);
-});
-
-// LocalStorage (save Language)_________________________________________________
-window.addEventListener('load', () => {
-  localStorage.getItem('lang', KeyLang.textContent);
-  if (localStorage.getItem('lang', KeyLang.textContent) === 'Eng') {
-    ReplaceLang(KeyRu);
-  }
-  if (localStorage.getItem('lang', KeyLang.textContent) === 'Ru') {
-    ReplaceLang(KeyEng);
-  }
-});
