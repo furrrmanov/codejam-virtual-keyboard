@@ -336,23 +336,7 @@ gridKey.addEventListener('mouseup', KeyAnimationUp);
 // Animation (Keyboard) function_________________________________________________________________
 function keyboardKeyDown(event) {
   const keyboardKey = event.key;
-  if (
-    keyboardKey !== 'Shift'
-    && keyboardKey !== 'Backspace'
-    && keyboardKey !== 'Tab'
-    && keyboardKey !== 'CapsLock'
-    && keyboardKey !== 'Control'
-    && keyboardKey !== 'Ctrl'
-    && keyboardKey !== 'Meta'
-    && keyboardKey !== 'Alt'
-    && keyboardKey !== 'AltGraph'
-    && keyboardKey !== 'Enter'
-    && keyboardKey !== 'Delete'
-    && keyboardKey !== 'ArrowLeft'
-    && keyboardKey !== 'ArrowRight'
-    && keyboardKey !== 'ArrowUp'
-    && keyboardKey !== 'ArrowDown'
-  ) {
+  if (keyboardKey.length === 1) {
     setFocus();
     textAr.value += keyboardKey.slice(0, -1);
   }
