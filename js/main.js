@@ -200,9 +200,8 @@ function setFocus() {
 }
 setFocus();
 
-// Replace lanuage__________________________________________________________________________________
+// Replace lanuage_______________________________________________________________________________
 const KeyLang = document.querySelector('.win');
-
 
 // Mouse Shift Down_______________________________________________________________________________
 function MouseShiftDown(event) {
@@ -673,11 +672,19 @@ textAr.oninput = () => {
   localStorage.setItem('area', textAr.value);
 };
 
-const rus = 'йцукенгшщзхъфывапролджэячсмитьбю';
+KeyLang.textContent = localStorage.getItem('lang');
+window.addEventListener('beforeunload', () => {
+  localStorage.setItem('lang', KeyLang.textContent);
+});
+
 window.addEventListener('load', () => {
-  if (rus.includes(textAr.value[textAr.value.length - 1])) {
+  localStorage.getItem('lang', KeyLang.textContent);
+  if (localStorage.getItem('lang', KeyLang.textContent) === 'Eng') {
     ReplaceLang(KeyRu);
-  } else {
+  }
+  if (localStorage.getItem('lang', KeyLang.textContent) === 'Ru') {
     ReplaceLang(KeyEng);
   }
 });
+
+console.log(localStorage.getItem('lang', KeyLang.textContent));
