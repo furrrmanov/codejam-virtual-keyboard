@@ -686,5 +686,3 @@ window.addEventListener('load', () => {
     ReplaceLang(KeyEng);
   }
 });
-
-console.log(localStorage.getItem('lang', KeyLang.textContent));
