@@ -608,7 +608,6 @@ document.addEventListener('keydown', handler);
 function handlerReplaceLang(event) {
   if (event.code === 'ShiftLeft' && event.ctrlKey && gridKey.classList.contains('Rus')) {
     KeyLang.textContent = 'Eng';
-    // ReplaceLang(KeyRu);
   }
 }
 document.addEventListener('keydown', handlerReplaceLang);
