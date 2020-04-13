@@ -18,10 +18,8 @@ body {
   display: flex;
   flex-direction: column;
   width: 855px;
-
   padding-top: 100px;
   padding-left: 250px;
-
 }
 
 textarea {
@@ -36,7 +34,6 @@ textarea {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  
 }
 
 .key {
@@ -258,6 +255,3 @@ textarea {
   background-color: rgba(76, 14, 138, 0.5);
 }
 
-
-
-/*___________________________________Special Buttons*/
